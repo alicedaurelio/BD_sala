@@ -104,5 +104,15 @@ namespace ProjetoFatec.br.com.projetofatec.view
             txtcidade.Text       = dgclientes.CurrentRow.Cells[12].Value.ToString();
             cbuf.Text            = dgclientes.CurrentRow.Cells[13].Value.ToString();
         }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            //1 Passo - Receber o nome do campo de texto
+            string nome = textPesquisa.Text;
+
+            //2 Passo - Criar o objeto ClienteDAO
+            ClienteDAO dao = new ClienteDAO();
+            dgclientes.DataSource = dao.ConsultaClientePorNome(nome);
+        }
     }
 }
